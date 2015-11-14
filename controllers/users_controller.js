@@ -45,7 +45,7 @@ function destroy(req, res) {
 }
 
 module.exports = {
-	create: create,
 	index: index,
+	create: create,
 	show: show
 }
