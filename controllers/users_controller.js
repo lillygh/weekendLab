@@ -2,9 +2,10 @@ var User = require('../models/user.js')
 
 //create action to display all users
 function index(req, res) {
-
-	//put your code here
-
+	User.find({}, function (err,users){
+		if (err) console.log(err)
+		res.json(users)
+	})
 }
 
 //create action to add a new user
@@ -16,9 +17,10 @@ function create(req, res) {
 
 //create action to show a single user
 function show(req, res) {
-
-	//put your code here
-
+	User.find({email: req.params.email}, function(err,user){
+		if (err) console.log(err)
+		res.json(user)
+	})
 }
 
 //create action to edit a single user
@@ -36,5 +38,6 @@ function destroy(req, res) {
 }
 
 module.exports = {
-	//add the methods here
+	index: index,
+	show: show
 }
