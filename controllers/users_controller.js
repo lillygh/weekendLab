@@ -8,10 +8,17 @@ function index(req, res) {
 	})
 }
 
-//create action to add a new user
+//create a new user
 function create(req, res) {
+	var user = new User()
+	user.user_name = req.body.user_name
+	user.email = req.body.email
+	user.age = req.body.age
 
-	//put your code here
+	user.save(function(err){
+		if (err) console.log(err)
+		res.json({success:true, message: 'User created - Hooray!'})
+	})
 
 }
 
@@ -39,5 +46,6 @@ function destroy(req, res) {
 
 module.exports = {
 	index: index,
+	create: create,
 	show: show
 }
