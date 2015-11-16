@@ -32,9 +32,10 @@ function show(req, res) {
 
 //create action to edit a single user
 function update(req, res) {
-
-	//put your code here
-
+	User.findOneAndUpdate({email: req.params.email},{email: req.body.email, user_name: req.body.user_name}, function(err, user) {
+		if (err) throw err
+		res.json(user)
+	})
 }
 
 //create action to delete a single user
@@ -47,5 +48,6 @@ function destroy(req, res) {
 module.exports = {
 	index: index,
 	create: create,
-	show: show
+	show: show,
+	update: update
 }

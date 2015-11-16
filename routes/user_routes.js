@@ -10,5 +10,7 @@ userRoutes.route('/')
 //create routes for /users/:email
 userRoutes.route('/:email')
 	.get(usersController.show)
+	.patch(usersController.update)
+
 
 module.exports = userRoutes
